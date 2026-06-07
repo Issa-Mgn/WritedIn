@@ -1,4 +1,19 @@
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://backend-writedin.onrender.com';
+const getApiBaseUrl = () => {
+  const configuredUrl = import.meta.env.VITE_API_URL || 'https://backend-writedin.onrender.com';
+
+  if (
+    import.meta.env.DEV &&
+    typeof window !== 'undefined' &&
+    configuredUrl.includes('localhost') &&
+    !['localhost', '127.0.0.1'].includes(window.location.hostname)
+  ) {
+    return configuredUrl.replace('localhost', window.location.hostname);
+  }
+
+  return configuredUrl;
+};
+
+const API_BASE_URL = getApiBaseUrl();
 const EMOJI_REGEX = /\p{Extended_Pictographic}/gu;
 const MIN_EMOJIS = 2;
 const MAX_EMOJIS = 5;

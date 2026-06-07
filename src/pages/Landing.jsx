@@ -116,13 +116,18 @@ const Landing = () => {
 
         {mobileMenuOpen && (
           <div className="mobile-menu-panel">
-            <button onClick={() => scrollToSection('use-cases')}>Cas d’usage</button>
-            <button onClick={() => scrollToSection('how-it-works')}>Méthode</button>
-            <button onClick={() => scrollToSection('features')}>Fonctionnalités</button>
-            <button onClick={() => scrollToSection('faq')}>FAQ</button>
+            <div className="mobile-menu-links">
+              <button onClick={() => scrollToSection('use-cases')}>Cas d’usage</button>
+              <button onClick={() => scrollToSection('how-it-works')}>Méthode</button>
+              <button onClick={() => scrollToSection('features')}>Fonctionnalités</button>
+              <button onClick={() => scrollToSection('faq')}>FAQ</button>
+            </div>
+
             <div className="mobile-menu-actions">
               <button onClick={() => navigate('/auth/login')}>Connexion</button>
-              <button onClick={() => navigate('/auth/register')}>Démarrer</button>
+              <button onClick={() => navigate('/auth/register')}>
+                Démarrer <ArrowRight size={18} />
+              </button>
             </div>
           </div>
         )}

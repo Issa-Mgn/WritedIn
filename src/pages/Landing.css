@@ -49,6 +49,7 @@ body.landing-menu-lock {
   align-items: center;
   gap: 12px;
   cursor: pointer;
+  min-width: 0;
 }
 
 .nav-logo-img {
@@ -63,6 +64,8 @@ body.landing-menu-lock {
   font-weight: 800;
   font-size: 1.5rem;
   color: var(--primary);
+  line-height: 1;
+  white-space: nowrap;
 }
 
 .nav-center-links {
@@ -830,6 +833,7 @@ body.landing-menu-lock {
 
   .nav-flex {
     padding: 0 16px;
+    gap: 10px;
   }
 
   .nav-logo-img {
@@ -838,7 +842,7 @@ body.landing-menu-lock {
   }
 
   .brand-name {
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 4.8vw, 1.2rem);
   }
 
   .nav-link-simple {
@@ -860,8 +864,8 @@ body.landing-menu-lock {
   }
 
   .landing-nav-simple.menu-open .mobile-menu-toggle {
-    border-color: transparent;
-    background: transparent;
+    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.14);
     color: white;
   }
 
@@ -870,14 +874,12 @@ body.landing-menu-lock {
     inset: 0;
     display: flex;
     flex-direction: column;
-    align-items: stretch;
-    gap: 16px;
-    background: rgba(2, 6, 23, 0.74);
+    justify-content: center;
+    gap: clamp(28px, 8vh, 56px);
+    background: #0f172a;
     border: 0;
-    padding: 118px 24px 34px;
+    padding: 96px 24px 34px;
     z-index: 1200;
-    backdrop-filter: blur(18px) saturate(120%);
-    -webkit-backdrop-filter: blur(18px) saturate(120%);
     animation: landingMenuFade 0.2s ease both;
   }
 
@@ -892,64 +894,73 @@ body.landing-menu-lock {
   }
 
   .landing-nav-simple.menu-open .logo-section {
-    opacity: 0;
-    pointer-events: none;
+    position: relative;
+    z-index: 1202;
   }
 
-  .mobile-menu-panel button {
-    position: relative;
-    z-index: 1;
+  .landing-nav-simple.menu-open .brand-name {
+    color: white;
+  }
+
+  .mobile-menu-links {
+    display: grid;
+    gap: clamp(12px, 2.4vh, 18px);
+    width: min(100%, 380px);
+    margin: 0 auto;
+  }
+
+  .mobile-menu-links button {
     width: 100%;
     margin: 0;
     border: none;
-    border-radius: 0;
-    background: transparent;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
     color: white;
-    padding: 8px 28px;
+    padding: clamp(14px, 3.4vw, 18px) 20px;
     font-family: inherit;
-    font-size: 2rem;
+    font-size: clamp(1.15rem, 6vw, 1.85rem);
     font-weight: 900;
-    letter-spacing: 0.08em;
-    text-align: left;
+    line-height: 1.1;
+    text-align: center;
     cursor: pointer;
-    box-shadow: none;
-    transform: translateY(0);
-    text-shadow: 0 1px 18px rgba(255, 255, 255, 0.18);
-    transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+    transition: background 0.2s ease, transform 0.2s ease;
   }
 
-  .mobile-menu-panel button:hover {
-    color: #dbeafe;
+  .mobile-menu-links button:hover {
+    background: rgba(255, 255, 255, 0.14);
     transform: translateY(-2px);
   }
 
   .mobile-menu-actions {
-    position: relative;
-    z-index: 1;
-    width: calc(100% - 56px);
-    margin: 18px 28px 0;
-    padding-top: 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.18);
     display: grid;
     grid-template-columns: 1fr;
     gap: 10px;
+    width: min(100%, 380px);
+    margin: 0 auto;
   }
 
   .mobile-menu-actions button {
     width: 100%;
-    padding-left: 0;
-    padding-right: 0;
-    font-size: 1.05rem;
-    font-weight: 800;
-    letter-spacing: 0.02em;
+    min-height: 50px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: transparent;
+    color: white;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 900;
+    cursor: pointer;
   }
 
   .mobile-menu-actions button:last-child {
-    background: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: white;
     color: white;
-    text-align: center;
-    border-radius: 14px;
-    padding: 13px 16px;
+    color: var(--slate-950);
+    border-color: white;
   }
 
   .btn-primary-pill {
@@ -1124,24 +1135,13 @@ body.landing-menu-lock {
     font-size: 0.78rem;
   }
 
-  .mobile-menu-actions {
-    grid-template-columns: 1fr;
-  }
-
   .mobile-menu-panel {
-    padding-top: 104px;
+    padding: 84px 18px 26px;
+    gap: 26px;
   }
 
-  .mobile-menu-panel button {
-    padding-left: 22px;
-    padding-right: 22px;
-    font-size: 1.72rem;
-  }
-
-  .mobile-menu-actions {
-    width: calc(100% - 44px);
-    margin-left: 22px;
-    margin-right: 22px;
+  .mobile-menu-links button {
+    font-size: clamp(1.08rem, 7vw, 1.55rem);
   }
 
   .hero-section {
@@ -1192,13 +1192,13 @@ body.landing-menu-lock {
 
 @media (max-width: 380px) {
   .brand-name {
-    display: none;
+    display: inline;
+    font-size: 0.95rem;
   }
 
-  .btn-primary-pill {
-    max-width: 190px;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  .nav-logo-img {
+    width: 31px !important;
+    height: 31px !important;
   }
 
   .mobile-menu-panel {
