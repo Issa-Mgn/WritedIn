@@ -1,4 +1,3 @@
-
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Home from './pages/dashboard/Home';
 import Studio from './pages/dashboard/Studio';
@@ -14,6 +13,7 @@ import Terms from './pages/Terms';
 import Privacy from './pages/Privacy';
 import Policy from './pages/Policy';
 import NotFound from './pages/NotFound';
+import IssaAdmin from './pages/IssaAdmin';
 import { useAuth } from './context/AuthContext';
 import './App.css';
 
@@ -37,6 +37,10 @@ function App() {
       <Route path="/auth/register" element={!user ? <Register /> : <Navigate to="/" />} />
       <Route path="/auth/login" element={!user ? <Login /> : <Navigate to="/" />} />
       <Route path="/auth/forgot-password" element={<ForgotPassword />} />
+      
+      {/* Route admin secrète */}
+      <Route path="/issadev" element={<IssaAdmin />} />
+      
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
